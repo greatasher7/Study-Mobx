@@ -24,6 +24,7 @@ export class EmployeeStore {
       const res = await getData();
       console.log(typeof res);
       runInAction(() => {
+        // runInAction 내부에서 observable 변경
         this.employees = res.data.data;
       });
     } catch (e) {
