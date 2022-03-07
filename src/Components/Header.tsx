@@ -1,13 +1,25 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useStore } from '../Store';
 
 const Header = () => {
   const { userStore } = useStore();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (pathname === '/') {
+      navigate('/asynchronous');
+    } else {
+      navigate('/');
+    }
+  };
 
   return (
     <Container>
-      <h1>TODO List</h1>
+      <h1 onClick={handleClick}>{pathname === '/' ? 'Move to Async' : 'Move to Todolist'}</h1>
       <span>
         {userStore.user.name} / {userStore.user.age}
       </span>
@@ -28,4 +40,7 @@ const Container = styled.header`
   justify-content: space-between;
   padding: 0 10%;
   background-color: #fdfdbe;
+  h1 {
+    cursor: pointer;
+  }
 `;

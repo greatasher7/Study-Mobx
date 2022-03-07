@@ -10,6 +10,7 @@
   "author": "asher",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.0",
     "dotenv": "^10.0.0",
     "mobx": "^6.4.2",
     "mobx-react": "^7.3.0",
